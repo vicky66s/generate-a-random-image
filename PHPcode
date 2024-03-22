@@ -1,0 +1,23 @@
+<?php
+// Image size
+$rows = 256;
+$cols = 256;
+
+// Create an empty image matrix
+$image = imagecreatetruecolor($cols, $rows);
+
+// Generate random pixel values
+for ($x = 0; $x < $cols; $x++) {
+    for ($y = 0; $y < $rows; $y++) {
+        $color = imagecolorallocate($image, rand(0, 255), rand(0, 255), rand(0, 255));
+        imagesetpixel($image, $x, $y, $color);
+    }
+}
+
+// Output the image
+header('Content-Type: image/png');
+imagepng($image);
+
+// Free up memory
+imagedestroy($image);
+?>
